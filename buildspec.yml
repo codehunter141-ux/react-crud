@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      # Isse aapka build S3 mein chala jayega
+      - aws s3 sync build/ s3://your-corporate-bucket-name --delete
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build
