@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://3.108.54.197/:8080/api/rest",
+  // Corporate Standard: CloudFront behavior handle karega is path ko
+  baseURL: "/api/rest", 
   headers: {
     "Content-Type": "application/json",
   },
